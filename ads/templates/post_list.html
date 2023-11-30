@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>home</title>
+</head>
+<body>
+    <h1>Welcome to annuncment</h1>
+    <h2>list of annuncment</h2>
+    <ul>
+        {% for ads in ads %}
+            <li><a href='detile/{{ads.id}}'>{{ads.title}}   {{ads.user}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

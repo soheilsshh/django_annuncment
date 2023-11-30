@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+        <div class="name">
+            <h1>{{user.username}}</h1>
+        </div>
+        <p>{{ user_ads }}</p>
+        <a href="/add_ads">post an annuncment</a>
+        <ul>
+            {% for ad in user_ads %}
+                <li>{{ ad.title }}</li>
+            {% endfor %}
+        </ul>
+
+
+
+</body>
+</html>

@@ -12,7 +12,7 @@
         </div>
         <h3>update ad</h3>
 
-        <form method="POST" action="/update_ad">
+        <form method="POST" action='/update_ad/{{ ad.id }}'>
             {% csrf_token %}
             <div>
                 <label for="title">Title:</label>
@@ -24,6 +24,8 @@
             </div>
             <div>
                 <button type="submit">Update Advertisement</button>
+                <br>
+                <a href = '/delete_ad/{{ ad.id }}'>delete</a>
             </div>
         </form>
     

@@ -9,11 +9,12 @@
         <div class="name">
             <h1>{{user.username}}</h1>
         </div>
-        <p>{{ user_ads }}</p>
         <a href="/add_ads">post an annuncment</a>
+        
+        <a href="/update_ad">update</a>
         <ul>
             {% for ad in user_ads %}
-                <li>{{ ad.title }}</li>
+                <a href = '/update_ad/{{ad.id}}'><li>{{ ad.title }}</li></a>
             {% endfor %}
         </ul>
 

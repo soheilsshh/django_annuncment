@@ -20,7 +20,7 @@ def login(request):
         user = authenticate(request,username = username,password = pass1)
         if user is not None:
             auth_login(request, user)
-            return render(request,'profile.html',{'user':user})
+            return redirect('profile')
         else:
             return redirect('index')
     return render(request, 'login.html')
@@ -48,6 +48,7 @@ def signin(request):
 def profile(request):
     user_id = request.user.id
     ads = Ads.objects.filter(user=user_id)
+    
     return render(request , 'profile.html',{'user':request.user,'user_ads':ads})
 
 def add_ads(request):
@@ -66,11 +67,19 @@ def post_list(request):
 def update_ad(request,id):
     ad = Ads.objects.get(id=id)
     if request.method == 'POST':
-        ad.title = request.POSt['title']
+        ad.title = request.POST['title']
         ad.description = request.POST['description']
         ad.save()
         return redirect('index')
-    return render(request,'update_ad.html')
+    return render(request,'update_ad.html',{'ad' : ad})
+
+def delete_ad(request,id):
+    ad = Ads.objects.get(id = id)
+    if request.method == 'POST':
+        ad.delete()
+        return redirect('index')
+    return render(request, 'delete_ad.html',{'ad' : ad})
+
 
 def detile(request,id):
     ad_id = Ads.objects.get(id=id)
